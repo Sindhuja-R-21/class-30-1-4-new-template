@@ -5,7 +5,9 @@ const Constraint = Matter.Constraint;
 var engine, world;
 var canvas, angle, tower, ground, cannon;
 
-var balls=[]; //will have all cannonballs
+//all cannonballs will be stored
+var balls=[]
+
 
 
 function preload() {
@@ -24,6 +26,18 @@ function setup() {
   cannon = new Cannon(180, 110, 100, 50, angle);
   
 
+  var a=[1,7,90,53]
+  
+
+ //push- Add elements to an array
+  a.push(100)
+  console.log(a)
+
+  //pop- remove elements from an array
+  a.pop()
+  console.log(a)
+  
+
 }
 
 function draw() {
@@ -40,27 +54,30 @@ function draw() {
   tower.display();
  
 
-  //for loop is used to traverse through array
+  //for loop- To access elements of an array
   for(var i=0;i<balls.length;i++){
      showCannonBalls(balls[i],i)
   }
  
 }
 
-function showCannonBalls(ball,index){
- ball.display();
+function  showCannonBalls(ball,index){
+  ball.display()
 }
 
 function keyPressed(){
+
   if(keyCode=== DOWN_ARROW){
    var cannonBall = new CannonBall(cannon.x, cannon.y);
-   balls.push(cannonBall);
+   balls.push(cannonBall)
   }
 }
 
 
 function keyReleased() {
   if (keyCode === DOWN_ARROW) {
-    balls[balls.length-1].shoot();
+
+    //length-1 ->last element of an array (last ball)
+    balls[balls.length-1].shoot()
   }
 }
